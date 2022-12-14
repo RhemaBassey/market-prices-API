@@ -67,10 +67,10 @@ def forexPrice(currencyPair,amount):
 print(nairaUSD_parallel(1000,"ngn-usd"))
 
 # Gets price for 1 Ethereum
-print(cryptoPriceUSD("vite",1))
+print(cryptoPriceUSD("Ethereum",1))
 
 # Gets price for 100 Tesla stocks
-print(stockPriceUSD("Tesla",1000))
+print(stockPriceUSD("Tesla",100))
 
 # Gets the JPY/USD rate
 print(forexPrice("jpy-usd",1))
