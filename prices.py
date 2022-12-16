@@ -30,22 +30,15 @@ def cryptoPriceUSD(cryptoName,amount):
         except:
             continue
 
-
-
-def stockPriceUSD(stockName,amount):
-      url_list =["https://www.google.com/finance"]
-      response2 = requests.get(url_list[0]+"/quote/"+stockName.lower())
-      soup = BeautifulSoup(response2.text, "html.parser")
-    
-      stocks = soup.find_all("div", class_="hCClyc")
-
-      for stock in stocks:
-        try:
-          stock_price = (stock.span.text)
-          stock_price_float = (float(stock_price[1:len(stock_price)].replace(",","")))
-          return round(stock_price_float*amount,2) 
-        except:
-            continue
+def stockPriceUSD(tickerSymbol,amount):
+    url= "https://finance.yahoo.com"
+    response = requests.get(url+"/quote/"+tickerSymbol+"?p="+tickerSymbol+"&.tsrc=fin-srch")
+    soup = BeautifulSoup(response.text, "html.parser")
+    try:
+      stockPrice = soup.find("fin-streamer", attrs={'data-symbol':tickerSymbol}).text
+      return round((float(stockPrice)*amount),2)
+    except:
+      return "ERROR: Not found. Ensure to use the stock's ticker symbol and it's spelled correctly."
 
 def forexPrice(currencyPair,amount):
       url_list =["https://www.google.com/finance"]
@@ -69,9 +62,8 @@ print(nairaUSD_parallel(1000,"ngn-usd"))
 # Gets price for 1 Ethereum
 print(cryptoPriceUSD("Ethereum",1))
 
-# Gets price for 100 Tesla stocks
-print(stockPriceUSD("Tesla",100))
+# Gets price for 100 Tesla (TSLA) stocks
+print(stockPriceUSD("TSLA",100))
 
 # Gets the JPY/USD rate
 print(forexPrice("jpy-usd",1))
-
