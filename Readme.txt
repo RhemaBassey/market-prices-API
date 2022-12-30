@@ -1,7 +1,4 @@
-The 'prices.py' script contains different python functions designed to webscrape
-stocks, crypto and curriency prices from various finance websites to give you
-real time information, and automate the entire process for you.
+A more advanced version of the previous market price api. 
+That allows for a csv file interface to input various assets and view the output.
 
-As someone who regularly keeps up to date with the markets, detailing and managing my personal finance,
-I decided to make this tool so that it will be a lot easier and streamlined for me and others 
-out there as well.
+The market price api 2 is now more intuitive to use, and is a much more practical MVP.
